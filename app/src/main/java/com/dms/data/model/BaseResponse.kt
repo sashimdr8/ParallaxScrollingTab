@@ -5,8 +5,8 @@ package com.dms.data.model
  */
 
 class BaseResponse<T> {
-    private  var code: Int = 0
-    private var message: String? = null
-    private var data: T? = null
+    var status=""
+    var totalResults: Int = 0
+    var articles: T? = null
 
 }

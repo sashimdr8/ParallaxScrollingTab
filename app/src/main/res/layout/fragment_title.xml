@@ -9,12 +9,12 @@
         android:padding="@dimen/activity_horizontal_margin"
         android:background="@color/windowBackground">
 
-        <TextView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="sadgdfgdfg"
-
+            android:orientation="vertical"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
            />
     </RelativeLayout>
 </layout>

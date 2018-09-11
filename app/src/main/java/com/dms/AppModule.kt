@@ -6,12 +6,14 @@ import com.google.gson.GsonBuilder
 import com.dms.data.AppData
 import com.dms.data.local.LocalRepo
 import com.dms.data.local.Prefs
+import com.dms.data.model.BaseResponseConverter
 import com.dms.data.remote.Api
 import com.dms.data.remote.RemoteRepo
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
@@ -40,11 +42,11 @@ class AppModule(private var app: Context) {
     fun provideRetrofit(client: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
                 .client(client)
-                .baseUrl("http://app.tracesell.com/api/")
-//                .addConverterFactory(BaseResponseConverter())
-                //                .addConverterFactory(ScalarsConverterFactory.create())//To convert primitive and boxed types
+                .baseUrl("https://newsapi.org/v2/")
+                .addConverterFactory(BaseResponseConverter())
+//                                .addConverterFactory(ScalarsConverterFactory.create())//To convert primitive and boxed types
                 .addConverterFactory(GsonConverterFactory.create(gson))
-//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
     }
 
